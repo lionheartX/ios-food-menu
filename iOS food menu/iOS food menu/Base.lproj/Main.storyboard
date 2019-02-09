@@ -1,24 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3YN-Ym-sSO">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Categories-->
+        <scene sceneID="G37-tK-r7v">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="Rsi-5u-jmd" customClass="CategoriesViewController" customModule="iOS_food_menu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qiv-g3-9rO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Eg-8c-f2V">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5Eg-8c-f2V" firstAttribute="leading" secondItem="JQx-wN-9Kh" secondAttribute="leading" id="1eX-ca-0yl"/>
+                            <constraint firstItem="JQx-wN-9Kh" firstAttribute="bottom" secondItem="5Eg-8c-f2V" secondAttribute="bottom" id="GRS-8g-dIf"/>
+                            <constraint firstItem="5Eg-8c-f2V" firstAttribute="top" secondItem="JQx-wN-9Kh" secondAttribute="top" id="OB7-ru-CH1"/>
+                            <constraint firstItem="JQx-wN-9Kh" firstAttribute="trailing" secondItem="5Eg-8c-f2V" secondAttribute="trailing" id="uHf-fC-DvK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JQx-wN-9Kh"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Categories" id="wfr-e6-rhc" userLabel="Categories"/>
+                    <connections>
+                        <outlet property="tableView" destination="5Eg-8c-f2V" id="5s6-lH-jHC"/>
+                        <segue destination="ISA-b4-cQ4" kind="show" identifier="showFoodItemPage" id="kS1-Y2-5MK"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="chj-kD-lsP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1662" y="179"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vck-6W-Xys">
+            <objects>
+                <navigationController id="3YN-Ym-sSO" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ruo-qr-RqZ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Rsi-5u-jmd" kind="relationship" relationship="rootViewController" id="jMB-vw-amW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ojC-0I-o2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="866" y="180"/>
+        </scene>
+        <!--Food Item-->
+        <scene sceneID="V6O-2F-4Or">
+            <objects>
+                <viewController id="ISA-b4-cQ4" userLabel="Food Item" customClass="FoodItemViewController" customModule="iOS_food_menu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OLk-Z2-aJW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="50y-uR-meH">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7qH-L9-2O2" firstAttribute="bottom" secondItem="50y-uR-meH" secondAttribute="bottom" id="0XU-SK-yhB"/>
+                            <constraint firstItem="50y-uR-meH" firstAttribute="leading" secondItem="7qH-L9-2O2" secondAttribute="leading" id="Lcm-Hz-D4v"/>
+                            <constraint firstItem="50y-uR-meH" firstAttribute="top" secondItem="7qH-L9-2O2" secondAttribute="top" id="QSv-P5-ghk"/>
+                            <constraint firstItem="7qH-L9-2O2" firstAttribute="trailing" secondItem="50y-uR-meH" secondAttribute="trailing" id="xLL-9U-BGG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7qH-L9-2O2"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Food Item" id="Pcc-hW-shn"/>
+                    <connections>
+                        <outlet property="navTitle" destination="Pcc-hW-shn" id="Con-Vo-MDp"/>
+                        <outlet property="tableView" destination="50y-uR-meH" id="GJf-ui-pay"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HJA-fM-lQO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2439" y="179"/>
         </scene>
     </scenes>
 </document>
