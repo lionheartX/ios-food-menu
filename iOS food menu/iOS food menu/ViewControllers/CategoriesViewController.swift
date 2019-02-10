@@ -7,25 +7,28 @@
 //
 
 import UIKit
+import CoreData
 
 class CategoriesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let foodItem0 = FoodItem(name: "Apple Pancake", price: 5.99, image: nil)
-    let foodItem1 = FoodItem(name: "Blueberry Pancake", price: 6.99, image: nil)
+//    let foodItem0 = FoodItem(name: "Apple Pancake", price: 5.99, imageUrl: nil)
+//    let foodItem1 = FoodItem(name: "Blueberry Pancake", price: 6.99, imageUrl: nil)
+//
+//    var food0 = Category(name: "Pancake", imageUrl: nil, foodItems: nil)
+//    let food1 = Category(name: "Eggs", imageUrl: nil, foodItems: nil)
+//    let food2 = Category(name: "Cheese", imageUrl: nil, foodItems: nil)
+//
+//    var foodList = [Category]()
     
-    var food0 = Category(name: "Pancake", image: nil, foodItems: nil)
-    let food1 = Category(name: "Eggs", image: nil, foodItems: nil)
-    let food2 = Category(name: "Cheese", image: nil, foodItems: nil)
-    
-    var foodList = [Category]()
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        food0.foodItems = [foodItem0, foodItem1]
-        foodList = [food0, food1, food2]
+//        food0.foodItems = [foodItem0, foodItem1]
+//        foodList = [food0, food1, food2]
         configureTableView()
     }
     
@@ -42,10 +45,10 @@ class CategoriesViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case Strings.SegueIds.foodItemPageSegueId:
-            if let vc = segue.destination as? FoodItemViewController, let categoryIndexPath = sender as? IndexPath {
-                vc.set(category: self.foodList[categoryIndexPath.row])
-            }
+//        case Strings.SegueIds.foodItemPageSegueId:
+//            if let vc = segue.destination as? FoodItemViewController, let categoryIndexPath = sender as? IndexPath {
+//                vc.set(category: self.foodList[categoryIndexPath.row])
+//            }
         default:
             return
         }
@@ -78,12 +81,13 @@ extension CategoriesViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     private func dequeueCategoryCell(_ indexPath: IndexPath) -> UITableViewCell {
-        guard let cell =  tableView.dequeueReusableCell(withIdentifier: String(describing: CustomCell.self), for: indexPath) as? CustomCell else {
-            return UITableViewCell()
-        }
-        
-        let category = foodList[indexPath.row]
-        cell.configure(name: category.name, image: category.image, price: nil)
-        return cell
+        return UITableViewCell()
+//        guard let cell =  tableView.dequeueReusableCell(withIdentifier: String(describing: CustomCell.self), for: indexPath) as? CustomCell else {
+//            return UITableViewCell()
+//        }
+//
+//        let category = foodList[indexPath.row]
+//        cell.configure(name: category.name, image: category.imageUrl, price: nil)
+//        return cell
     }
 }

@@ -23,7 +23,7 @@ class FoodItemViewController: UIViewController {
     }
     
     func configure(category: Category?) {
-        navTitle.title = category?.name
+//        navTitle.title = category?.name
     }
     
     func configureTableView() {
@@ -41,7 +41,8 @@ class FoodItemViewController: UIViewController {
 
 extension FoodItemViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return category?.foodItems?.count ?? 0
+//        return category?.foodItems?.count ?? 0
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,28 +58,21 @@ extension FoodItemViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func dequeueFoodItemCell(_ indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CustomCell.self), for: indexPath) as? CustomCell else {
-            return UITableViewCell()
-        }
         
-        guard let category = self.category else {
-            return UITableViewCell()
-        }
-        
-        guard let foodItems = category.foodItems else {
-            return UITableViewCell()
-        }
-        
-        guard indexPath.row < foodItems.count else {
-            return UITableViewCell()
-        }
-        
-        let roundedPrice = ((foodItems[indexPath.row].price ?? 0) * 100).rounded()/100 // round a Double to 2 digits after decimal
-        
-        cell.configure(name: foodItems[indexPath.row].name, image: foodItems[indexPath.row].image, price: String(roundedPrice))
-        return cell
+        return UITableViewCell()
+
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CustomCell.self), for: indexPath) as? CustomCell else {
+//            return UITableViewCell()
+//        }
+//
+//        guard let foodItems = self.category?.foodItems else {
+//            return UITableViewCell()
+//        }
+//
+//        let roundedPrice = ((foodItems[indexPath.row].price ?? 0) * 100).rounded()/100 // round a Double to 2 digits after decimal
+//
+//        cell.configure(name: foodItems[indexPath.row].name, image: foodItems[indexPath.row].imageUrl, price: String(roundedPrice))
+//        return cell
     }
-    
-    
-    
+
 }
