@@ -19,10 +19,6 @@ class CoreDataManagerTests: XCTestCase {
         coreDataManager = CoreDataManager()
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
     func test_setup_completionCalled() {
         let setupExpectation = expectation(description: "set up completion called")
         // use In-memory store type for default unit tests for faster testing

@@ -1,5 +1,5 @@
 //
-//  CategoriesViewController.swift
+//  FoodCategoryViewController.swift
 //  iOS food menu
 //
 //  Created by Zheng Xiong on 2019-02-07.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CategoriesViewController: UIViewController {
+class FoodCategoryViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -58,7 +58,7 @@ class CategoriesViewController: UIViewController {
 }
 
 // MARK: - Table view data source and delegate methods
-extension CategoriesViewController: UITableViewDataSource, UITableViewDelegate {
+extension FoodCategoryViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3

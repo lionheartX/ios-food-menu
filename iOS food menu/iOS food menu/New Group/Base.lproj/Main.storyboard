@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Categories-->
+        <!--Food Category-->
         <scene sceneID="G37-tK-r7v">
             <objects>
-                <viewController id="Rsi-5u-jmd" customClass="CategoriesViewController" customModule="iOS_food_menu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Rsi-5u-jmd" userLabel="Food Category" customClass="FoodCategoryViewController" customModule="iOS_food_menu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qiv-g3-9rO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,7 +34,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Categories" id="wfr-e6-rhc" userLabel="Categories"/>
                     <connections>
-                        <outlet property="tableView" destination="5Eg-8c-f2V" id="5s6-lH-jHC"/>
+                        <outlet property="tableView" destination="5Eg-8c-f2V" id="6qv-B8-QH8"/>
                         <segue destination="ISA-b4-cQ4" kind="show" identifier="showFoodItemPage" id="kS1-Y2-5MK"/>
                     </connections>
                 </viewController>

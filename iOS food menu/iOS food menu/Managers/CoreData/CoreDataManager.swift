@@ -51,6 +51,4 @@ class CoreDataManager {
             completion()
         }
     }
-    
-    
 }
