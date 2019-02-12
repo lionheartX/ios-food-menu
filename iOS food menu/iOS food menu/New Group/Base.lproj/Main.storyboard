@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Eg-8c-f2V">
-                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="507"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -32,8 +32,24 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JQx-wN-9Kh"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Categories" id="wfr-e6-rhc" userLabel="Categories"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Categories" id="wfr-e6-rhc" userLabel="Categories">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="i9c-u4-SYm">
+                                <connections>
+                                    <action selector="addButtonPressed:" destination="Rsi-5u-jmd" id="bN6-By-zbE"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="edit" id="ovr-k9-Tbl">
+                                <connections>
+                                    <action selector="editButtonPressed:" destination="Rsi-5u-jmd" id="b28-e4-D1S"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addButtonPressed" destination="i9c-u4-SYm" id="SOQ-eZ-Tss"/>
                         <outlet property="tableView" destination="5Eg-8c-f2V" id="6qv-B8-QH8"/>
                         <segue destination="ISA-b4-cQ4" kind="show" identifier="showFoodItemPage" id="kS1-Y2-5MK"/>
                     </connections>
@@ -67,7 +83,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="50y-uR-meH">
-                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="507"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -80,7 +96,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7qH-L9-2O2"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Food Item" id="Pcc-hW-shn"/>
+                    <navigationItem key="navigationItem" title="Food Item" id="Pcc-hW-shn">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="cGf-mh-HqM"/>
+                            <barButtonItem systemItem="edit" id="InD-S3-H8d"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="navTitle" destination="Pcc-hW-shn" id="Con-Vo-MDp"/>
                         <outlet property="tableView" destination="50y-uR-meH" id="GJf-ui-pay"/>

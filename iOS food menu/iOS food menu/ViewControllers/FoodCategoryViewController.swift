@@ -13,23 +13,39 @@ class FoodCategoryViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-//    let foodItem0 = FoodItem(name: "Apple Pancake", price: 5.99, imageUrl: nil)
-//    let foodItem1 = FoodItem(name: "Blueberry Pancake", price: 6.99, imageUrl: nil)
-//
-//    var food0 = Category(name: "Pancake", imageUrl: nil, foodItems: nil)
-//    let food1 = Category(name: "Eggs", imageUrl: nil, foodItems: nil)
-//    let food2 = Category(name: "Cheese", imageUrl: nil, foodItems: nil)
-//
-//    var foodList = [Category]()
+    
+    @IBAction func addButtonPressed(_ sender: Any) {
+        
+    }
+    
+    @IBAction func editButtonPressed(_ sender: Any) {
+    }
     
     
+    private let foodCategoryDataManager = FoodCategoryDataManager()
+    
+    private lazy var fetchedResultsControllerDelegateHandler: TableViewFetchedResultsControllerDelegateHandler = {
+        return TableViewFetchedResultsControllerDelegateHandler(tableView: self.tableView)
+    }()
+    
+    private lazy var fetchedResultsController: NSFetchedResultsController<FoodCategory> = {
+        let fetchRequest = NSFetchRequest<FoodCategory>(entityName: String(describing: FoodCategory.self))
+        let sortDescriptor = NSSortDescriptor(key: "index", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataManager.shared.mainContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self.fetchedResultsControllerDelegateHandler
+        
+        return fetchedResultsController
+    }()
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-//        food0.foodItems = [foodItem0, foodItem1]
-//        foodList = [food0, food1, food2]
         configureTableView()
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            fatalError()
+        }
     }
     
     func configureTableView() {
@@ -61,7 +77,7 @@ class FoodCategoryViewController: UIViewController {
 extension FoodCategoryViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return fetchedResultsController.fetchedObjects?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,13 +97,14 @@ extension FoodCategoryViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     private func dequeueCategoryCell(_ indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-//        guard let cell =  tableView.dequeueReusableCell(withIdentifier: String(describing: CustomCell.self), for: indexPath) as? CustomCell else {
-//            return UITableViewCell()
-//        }
-//
-//        let category = foodList[indexPath.row]
-//        cell.configure(name: category.name, image: category.imageUrl, price: nil)
-//        return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CustomCell.self), for: indexPath) as? CustomCell else {
+            return UITableViewCell()
+        }
+
+        guard let foodCategory = fetchedResultsController.fetchedObjects?[indexPath.row] else {
+            return UITableViewCell()
+        }
+        cell.configure(name: foodCategory.name, image: foodCategory.imageURL, price: nil)
+        return cell
     }
 }

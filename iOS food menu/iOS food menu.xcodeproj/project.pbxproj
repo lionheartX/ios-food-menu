@@ -14,6 +14,7 @@
 		9E127D9D220FA017004AEFEB /* NSPersistentContainer+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E127D9C220FA017004AEFEB /* NSPersistentContainer+Helper.swift */; };
 		9E127D9F220FD9B3004AEFEB /* FoodCategoryDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E127D9E220FD9B3004AEFEB /* FoodCategoryDataManagerTests.swift */; };
 		9E127DA1220FDAB4004AEFEB /* CoreDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E127DA0220FDAB4004AEFEB /* CoreDataMock.swift */; };
+		9E127DA3220FEB9E004AEFEB /* TableViewFetchedResultsControllerDelegateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E127DA2220FEB9E004AEFEB /* TableViewFetchedResultsControllerDelegateHandler.swift */; };
 		9E6114F8220D04FC008B5D40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6114F7220D04FC008B5D40 /* AppDelegate.swift */; };
 		9E6114FD220D04FC008B5D40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E6114FB220D04FC008B5D40 /* Main.storyboard */; };
 		9E611500220D04FC008B5D40 /* iOS_food_menu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E6114FE220D04FC008B5D40 /* iOS_food_menu.xcdatamodeld */; };
@@ -45,6 +46,7 @@
 		9E127D9C220FA017004AEFEB /* NSPersistentContainer+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPersistentContainer+Helper.swift"; sourceTree = "<group>"; };
 		9E127D9E220FD9B3004AEFEB /* FoodCategoryDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategoryDataManagerTests.swift; sourceTree = "<group>"; };
 		9E127DA0220FDAB4004AEFEB /* CoreDataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMock.swift; sourceTree = "<group>"; };
+		9E127DA2220FEB9E004AEFEB /* TableViewFetchedResultsControllerDelegateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFetchedResultsControllerDelegateHandler.swift; sourceTree = "<group>"; };
 		9E6114F4220D04FC008B5D40 /* iOS food menu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS food menu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E6114F7220D04FC008B5D40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E6114FC220D04FC008B5D40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		9E127D92220F93F6004AEFEB /* FRCs */ = {
 			isa = PBXGroup;
 			children = (
+				9E127DA2220FEB9E004AEFEB /* TableViewFetchedResultsControllerDelegateHandler.swift */,
 			);
 			path = FRCs;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				9E61151F220D131A008B5D40 /* FoodItemViewController.swift in Sources */,
 				9E127D96220F9473004AEFEB /* FoodCategoryDataManager.swift in Sources */,
 				9E611500220D04FC008B5D40 /* iOS_food_menu.xcdatamodeld in Sources */,
+				9E127DA3220FEB9E004AEFEB /* TableViewFetchedResultsControllerDelegateHandler.swift in Sources */,
 				9E61151D220D1300008B5D40 /* FoodCategoryViewController.swift in Sources */,
 				9E61152A220D3AB8008B5D40 /* CustomCell.swift in Sources */,
 				9E127D8C220F8121004AEFEB /* CoreDataManager.swift in Sources */,

@@ -12,12 +12,12 @@ import CoreData
 class CoreDataManager {
     static let shared = CoreDataManager()
     
-    private var storeType: String!
+    private var storeType: String?
     
     lazy var persistentContainer: NSPersistentContainer! = {
         let persistentContainer = NSPersistentContainer(name: "iOS_food_menu")
         let description = persistentContainer.persistentStoreDescriptions.first
-        description?.type = storeType
+        description?.type = storeType ?? NSSQLiteStoreType
         return persistentContainer
     }()
 
