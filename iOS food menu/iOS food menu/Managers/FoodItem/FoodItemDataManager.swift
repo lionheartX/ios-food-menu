@@ -18,7 +18,7 @@ class FoodItemDataManager {
     }
     
     // MARK: - CRUD
-    func createFoodItem(name: String, imageUrl: String, price: Double) {
+    func createFoodItem(name: String, imageUrl: String?, price: String) {
         persistentContainer.performBackgroundTask { (context) in
             let foodItem = FoodItem(context: context)
             foodItem.name = name
@@ -28,7 +28,7 @@ class FoodItemDataManager {
         }
     }
     
-    func updateFoodItem(foodItem: FoodItem, name: String, imageUrl: String, price: Double) {
+    func updateFoodItem(foodItem: FoodItem, name: String, imageUrl: String?, price: String) {
         let objectId = foodItem.objectID
         persistentContainer.performBackgroundTask { (context) in
             if let itemToUpdate = context.object(with: objectId) as? FoodItem {

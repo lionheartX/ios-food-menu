@@ -37,19 +37,19 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="i9c-u4-SYm">
                                 <connections>
-                                    <action selector="addButtonPressed:" destination="Rsi-5u-jmd" id="bN6-By-zbE"/>
+                                    <action selector="addButtonPressed:" destination="Rsi-5u-jmd" id="rgP-4Z-hNS"/>
+                                    <segue destination="vJo-Yy-Wrh" kind="show" identifier="editFoodCategory" id="fcH-Yy-UhO"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="edit" id="ovr-k9-Tbl">
+                            <barButtonItem title="Reorder" id="ovr-k9-Tbl">
                                 <connections>
-                                    <action selector="editButtonPressed:" destination="Rsi-5u-jmd" id="b28-e4-D1S"/>
+                                    <action selector="reorderButtonPressed:" destination="Rsi-5u-jmd" id="sfl-H5-OqQ"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="addButtonPressed" destination="i9c-u4-SYm" id="SOQ-eZ-Tss"/>
                         <outlet property="tableView" destination="5Eg-8c-f2V" id="6qv-B8-QH8"/>
                         <segue destination="ISA-b4-cQ4" kind="show" identifier="showFoodItemPage" id="kS1-Y2-5MK"/>
                     </connections>
@@ -82,7 +82,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="50y-uR-meH">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="50y-uR-meH">
                                 <rect key="frame" x="0.0" y="116" width="375" height="507"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -98,8 +98,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Food Item" id="Pcc-hW-shn">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="cGf-mh-HqM"/>
-                            <barButtonItem systemItem="edit" id="InD-S3-H8d"/>
+                            <barButtonItem systemItem="add" id="cGf-mh-HqM">
+                                <connections>
+                                    <segue destination="2H4-XS-HE0" kind="show" identifier="editFoodItem" id="0gT-I3-irU"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Reorder" id="InD-S3-H8d"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -109,7 +113,160 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJA-fM-lQO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2439" y="179"/>
+            <point key="canvasLocation" x="2490" y="179"/>
+        </scene>
+        <!--Edit Food Category View Controller-->
+        <scene sceneID="hJF-bw-LtM">
+            <objects>
+                <viewController id="vJo-Yy-Wrh" customClass="EditFoodCategoryViewController" customModule="iOS_food_menu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aZl-op-l5C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DTs-of-GXO">
+                                <rect key="frame" x="30" y="146" width="315" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload an image from your album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ls2-3A-H6t">
+                                <rect key="frame" x="30" y="201" width="315" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iki-nb-SUS">
+                                <rect key="frame" x="30" y="228" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="1Hv-hd-OSJ"/>
+                                    <constraint firstAttribute="width" constant="60" id="DaA-zb-l1l"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="CameraIcon"/>
+                                <connections>
+                                    <action selector="cameraButtonPressed:" destination="vJo-Yy-Wrh" eventType="touchUpInside" id="riu-zg-jza"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AT3-nf-ZxG">
+                                <rect key="frame" x="60" y="313" width="255" height="255"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="AT3-nf-ZxG" secondAttribute="height" multiplier="1:1" id="vfa-WO-6Gy"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ls2-3A-H6t" firstAttribute="leading" secondItem="DTs-of-GXO" secondAttribute="leading" id="8lU-C6-C5t"/>
+                            <constraint firstItem="AT3-nf-ZxG" firstAttribute="leading" secondItem="RjP-Xv-RUl" secondAttribute="leading" constant="60" id="Bew-PC-Gcu"/>
+                            <constraint firstItem="AT3-nf-ZxG" firstAttribute="top" secondItem="iki-nb-SUS" secondAttribute="bottom" constant="25" id="GH1-YX-MJL"/>
+                            <constraint firstItem="ls2-3A-H6t" firstAttribute="top" secondItem="DTs-of-GXO" secondAttribute="bottom" constant="25" id="Mb7-Yu-upM"/>
+                            <constraint firstItem="iki-nb-SUS" firstAttribute="top" secondItem="ls2-3A-H6t" secondAttribute="bottom" constant="10" id="Nn7-AD-Sni"/>
+                            <constraint firstItem="RjP-Xv-RUl" firstAttribute="trailing" secondItem="AT3-nf-ZxG" secondAttribute="trailing" constant="60" id="S0J-3h-S3r"/>
+                            <constraint firstItem="RjP-Xv-RUl" firstAttribute="trailing" secondItem="DTs-of-GXO" secondAttribute="trailing" constant="30" id="UbU-bA-M2g"/>
+                            <constraint firstItem="ls2-3A-H6t" firstAttribute="trailing" secondItem="DTs-of-GXO" secondAttribute="trailing" id="YWX-dX-LWr"/>
+                            <constraint firstItem="iki-nb-SUS" firstAttribute="leading" secondItem="ls2-3A-H6t" secondAttribute="leading" id="YfW-hs-2vW"/>
+                            <constraint firstItem="DTs-of-GXO" firstAttribute="top" secondItem="RjP-Xv-RUl" secondAttribute="top" constant="30" id="dAO-3I-B48"/>
+                            <constraint firstItem="DTs-of-GXO" firstAttribute="leading" secondItem="RjP-Xv-RUl" secondAttribute="leading" constant="30" id="jIo-B2-ZQB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RjP-Xv-RUl"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Vgh-Le-4NN">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="mfE-rn-M6b">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="vJo-Yy-Wrh" id="cwX-t3-flT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="AT3-nf-ZxG" id="f5v-Ia-kxI"/>
+                        <outlet property="nameTextField" destination="DTs-of-GXO" id="IfQ-a3-MRj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D9c-M0-7fF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1661.5999999999999" y="903.59820089955031"/>
+        </scene>
+        <!--Edit Food Item View Controller-->
+        <scene sceneID="v7l-o9-Bj4">
+            <objects>
+                <viewController id="2H4-XS-HE0" customClass="EditFoodItemViewController" customModule="iOS_food_menu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xeh-CE-2ra">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZGZ-Yq-krY">
+                                <rect key="frame" x="30" y="146" width="315" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3zN-d7-XG6" userLabel="Price" customClass="CurrencyTextField" customModule="iOS_food_menu" customModuleProvider="target">
+                                <rect key="frame" x="30" y="201" width="315" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload an image from your album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51F-i9-W68">
+                                <rect key="frame" x="30" y="256" width="315" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SR5-WN-6Li">
+                                <rect key="frame" x="30" y="283" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="ZQF-LQ-JPu"/>
+                                    <constraint firstAttribute="height" constant="60" id="pLW-Af-HyI"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="CameraIcon"/>
+                                <connections>
+                                    <action selector="cameraButtonPressed:" destination="2H4-XS-HE0" eventType="touchUpInside" id="BhR-QS-Bh7"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gqN-xk-RST">
+                                <rect key="frame" x="60" y="368" width="255" height="255"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gqN-xk-RST" secondAttribute="height" multiplier="1:1" id="ufe-qC-NtN"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nk9-bc-IAS" firstAttribute="trailing" secondItem="ZGZ-Yq-krY" secondAttribute="trailing" constant="30" id="9Zx-7x-FDK"/>
+                            <constraint firstItem="3zN-d7-XG6" firstAttribute="top" secondItem="ZGZ-Yq-krY" secondAttribute="bottom" constant="25" id="A2h-sH-SOk"/>
+                            <constraint firstItem="3zN-d7-XG6" firstAttribute="trailing" secondItem="ZGZ-Yq-krY" secondAttribute="trailing" id="GXG-hS-mqy"/>
+                            <constraint firstItem="gqN-xk-RST" firstAttribute="leading" secondItem="nk9-bc-IAS" secondAttribute="leading" constant="60" id="Ic1-Fb-NaI"/>
+                            <constraint firstItem="51F-i9-W68" firstAttribute="top" secondItem="3zN-d7-XG6" secondAttribute="bottom" constant="25" id="SWr-zH-INm"/>
+                            <constraint firstItem="51F-i9-W68" firstAttribute="trailing" secondItem="ZGZ-Yq-krY" secondAttribute="trailing" id="Vpw-Tn-z6y"/>
+                            <constraint firstItem="ZGZ-Yq-krY" firstAttribute="top" secondItem="nk9-bc-IAS" secondAttribute="top" constant="30" id="Woz-yE-oby"/>
+                            <constraint firstItem="51F-i9-W68" firstAttribute="leading" secondItem="ZGZ-Yq-krY" secondAttribute="leading" id="XWo-6O-8Lv"/>
+                            <constraint firstItem="SR5-WN-6Li" firstAttribute="top" secondItem="51F-i9-W68" secondAttribute="bottom" constant="10" id="Yni-vb-qRP"/>
+                            <constraint firstItem="nk9-bc-IAS" firstAttribute="trailing" secondItem="gqN-xk-RST" secondAttribute="trailing" constant="60" id="fvi-SS-2Cb"/>
+                            <constraint firstItem="SR5-WN-6Li" firstAttribute="leading" secondItem="51F-i9-W68" secondAttribute="leading" id="jYX-a7-3KJ"/>
+                            <constraint firstItem="ZGZ-Yq-krY" firstAttribute="leading" secondItem="nk9-bc-IAS" secondAttribute="leading" constant="30" id="lxE-hT-MXk"/>
+                            <constraint firstItem="gqN-xk-RST" firstAttribute="top" secondItem="SR5-WN-6Li" secondAttribute="bottom" constant="25" id="qbi-7S-Y4G"/>
+                            <constraint firstItem="3zN-d7-XG6" firstAttribute="leading" secondItem="ZGZ-Yq-krY" secondAttribute="leading" id="rYJ-aZ-JAL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nk9-bc-IAS"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gfg-8D-euT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="b64-4F-34D">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="2H4-XS-HE0" id="cod-yV-4eX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="gqN-xk-RST" id="WN6-Ok-L2S"/>
+                        <outlet property="nameTextField" destination="ZGZ-Yq-krY" id="GfT-X7-Kmf"/>
+                        <outlet property="priceTextField" destination="3zN-d7-XG6" id="CVD-Kr-KsP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mpo-qw-8Le" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2489" y="904"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CameraIcon" width="491.51998901367188" height="491.51998901367188"/>
+    </resources>
 </document>

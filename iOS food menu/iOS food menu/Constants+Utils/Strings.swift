@@ -10,5 +10,7 @@ import Foundation
 struct Strings {
     struct SegueIds {
         static let foodItemPageSegueId = "showFoodItemPage"
+        static let editFoodCategorySegueId = "editFoodCategory"
+        static let editFoodItemSegueId = "editFoodItem"
     }
 }

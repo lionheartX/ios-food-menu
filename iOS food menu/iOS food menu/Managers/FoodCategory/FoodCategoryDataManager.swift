@@ -10,39 +10,44 @@ import Foundation
 import CoreData
 
 class FoodCategoryDataManager {
-    let persistentContainer: NSPersistentContainer
+//    let persistentContainer: NSPersistentContainer
     
-    init(persistentContainer: NSPersistentContainer = CoreDataManager.shared.persistentContainer) {
-        self.persistentContainer = persistentContainer
+    let backgroundContext: NSManagedObjectContext
+    
+    init(backgroundContext: NSManagedObjectContext = CoreDataManager.shared.backgroundContext) {
+        self.backgroundContext = backgroundContext
     }
     
     // MARK: - CRUD
-    func createFoodCategory(name: String, imageUrl: String) {
-        persistentContainer.performBackgroundTask { (context) in
-            let foodCategory = FoodCategory(context: context)
+    func createFoodCategory(name: String, imageUrl: String?) {
+        backgroundContext.performAndWait {
+            guard let foodCategory = NSEntityDescription.insertNewObject(forEntityName: String(describing: FoodCategory.self), into: backgroundContext) as? FoodCategory else {
+                fatalError("CoreData type mis-match")
+            }
+            
             foodCategory.name = name
             foodCategory.imageURL = imageUrl
-            try? context.save()
+            try? backgroundContext.save()
         }
     }
     
-    func updateFoodCategory(foodCategory: FoodCategory, name: String, imageUrl: String) {
+    func updateFoodCategory(foodCategory: FoodCategory, name: String, imageUrl: String?) {
         let objectId = foodCategory.objectID
-        persistentContainer.performBackgroundTask { (context) in
-            if let categoryToUpdate = context.object(with: objectId) as? FoodCategory {
+        backgroundContext.performAndWait {
+            if let categoryInContext = try? backgroundContext.existingObject(with: objectId), let categoryToUpdate = categoryInContext as? FoodCategory {
                 categoryToUpdate.name = name
                 categoryToUpdate.imageURL = imageUrl
-                try? context.save()
+                try? backgroundContext.save()
             }
         }
     }
     
     func deleteFoodCategory(foodCategory: FoodCategory) {
         let objectId = foodCategory.objectID
-        persistentContainer.performBackgroundTask { (context) in
-            if let categoryInContext = try? context.existingObject(with: objectId) {
-                context.delete(categoryInContext)
-                try? context.save()
+        backgroundContext.performAndWait {
+            if let categoryInContext = try? backgroundContext.existingObject(with: objectId) {
+                backgroundContext.delete(categoryInContext)
+                try? backgroundContext.save()
             }
         }
     }

@@ -25,10 +25,11 @@ class CustomCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(name: String?, image: String?, price: String?) {
+    func configure(name: String?, image: UIImage?, price: String?) {
         self.name.text = name
         self.name.isHidden = (name == nil)
-        self.price.text = "$" + (price ?? "0.00")
+        self.cellImageView.image = image
+        self.price.text = price
         self.price.isHidden = (price == nil)
     }
     

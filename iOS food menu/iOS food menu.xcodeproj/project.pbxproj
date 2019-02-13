@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E0E966A221289FB00832197 /* EditFoodCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0E9669221289FB00832197 /* EditFoodCategoryViewController.swift */; };
+		9E0E966C221290BE00832197 /* EditFoodItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0E966B221290BE00832197 /* EditFoodItemViewController.swift */; };
+		9E0E967B2213999B00832197 /* FilePathManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0E967A2213999B00832197 /* FilePathManager.swift */; };
+		9E0E967D2213ED0B00832197 /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0E967C2213ED0B00832197 /* UIViewController+Helpers.swift */; };
+		9E0E967F2213EF2500832197 /* CurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0E967E2213EF2500832197 /* CurrencyTextField.swift */; };
 		9E127D89220F641A004AEFEB /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E127D88220F641A004AEFEB /* Strings.swift */; };
 		9E127D8C220F8121004AEFEB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E127D8B220F8121004AEFEB /* CoreDataManager.swift */; };
 		9E127D96220F9473004AEFEB /* FoodCategoryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E127D95220F9473004AEFEB /* FoodCategoryDataManager.swift */; };
@@ -39,6 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E0E9669221289FB00832197 /* EditFoodCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFoodCategoryViewController.swift; sourceTree = "<group>"; };
+		9E0E966B221290BE00832197 /* EditFoodItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFoodItemViewController.swift; sourceTree = "<group>"; };
+		9E0E967A2213999B00832197 /* FilePathManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePathManager.swift; sourceTree = "<group>"; };
+		9E0E967C2213ED0B00832197 /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
+		9E0E967E2213EF2500832197 /* CurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextField.swift; sourceTree = "<group>"; };
 		9E127D88220F641A004AEFEB /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		9E127D8B220F8121004AEFEB /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		9E127D95220F9473004AEFEB /* FoodCategoryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategoryDataManager.swift; sourceTree = "<group>"; };
@@ -82,9 +92,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E0E96792213997D00832197 /* FilePathManager */ = {
+			isa = PBXGroup;
+			children = (
+				9E0E967A2213999B00832197 /* FilePathManager.swift */,
+			);
+			path = FilePathManager;
+			sourceTree = "<group>";
+		};
 		9E127D8A220F8108004AEFEB /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				9E0E96792213997D00832197 /* FilePathManager */,
 				9E127D93220F9402004AEFEB /* FoodCategory */,
 				9E127D94220F9448004AEFEB /* FoodItem */,
 				9E127D91220F9381004AEFEB /* CoreData */,
@@ -115,6 +134,7 @@
 			children = (
 				9E611520220D1A2E008B5D40 /* Constants.swift */,
 				9E127D88220F641A004AEFEB /* Strings.swift */,
+				9E0E967C2213ED0B00832197 /* UIViewController+Helpers.swift */,
 			);
 			path = "Constants+Utils";
 			sourceTree = "<group>";
@@ -211,6 +231,8 @@
 			children = (
 				9E61151C220D1300008B5D40 /* FoodCategoryViewController.swift */,
 				9E61151E220D131A008B5D40 /* FoodItemViewController.swift */,
+				9E0E9669221289FB00832197 /* EditFoodCategoryViewController.swift */,
+				9E0E966B221290BE00832197 /* EditFoodItemViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -228,6 +250,7 @@
 			children = (
 				9E611528220D3AB8008B5D40 /* CustomCell.swift */,
 				9E611529220D3AB8008B5D40 /* CustomCell.xib */,
+				9E0E967E2213EF2500832197 /* CurrencyTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -334,16 +357,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E0E967B2213999B00832197 /* FilePathManager.swift in Sources */,
 				9E127D98220F9484004AEFEB /* FoodItemDataManager.swift in Sources */,
 				9E611521220D1A2E008B5D40 /* Constants.swift in Sources */,
 				9E127D89220F641A004AEFEB /* Strings.swift in Sources */,
 				9E6114F8220D04FC008B5D40 /* AppDelegate.swift in Sources */,
 				9E61151F220D131A008B5D40 /* FoodItemViewController.swift in Sources */,
+				9E0E967F2213EF2500832197 /* CurrencyTextField.swift in Sources */,
 				9E127D96220F9473004AEFEB /* FoodCategoryDataManager.swift in Sources */,
 				9E611500220D04FC008B5D40 /* iOS_food_menu.xcdatamodeld in Sources */,
 				9E127DA3220FEB9E004AEFEB /* TableViewFetchedResultsControllerDelegateHandler.swift in Sources */,
+				9E0E966C221290BE00832197 /* EditFoodItemViewController.swift in Sources */,
+				9E0E966A221289FB00832197 /* EditFoodCategoryViewController.swift in Sources */,
 				9E61151D220D1300008B5D40 /* FoodCategoryViewController.swift in Sources */,
 				9E61152A220D3AB8008B5D40 /* CustomCell.swift in Sources */,
+				9E0E967D2213ED0B00832197 /* UIViewController+Helpers.swift in Sources */,
 				9E127D8C220F8121004AEFEB /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

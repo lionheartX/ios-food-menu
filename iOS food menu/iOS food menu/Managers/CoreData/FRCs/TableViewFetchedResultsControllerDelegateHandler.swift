@@ -54,4 +54,18 @@ extension TableViewFetchedResultsControllerDelegateHandler: NSFetchedResultsCont
             }
         }, completion: nil)
     }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .insert:
+            insertionChanges.append(newIndexPath!)
+        case .delete:
+            deletionChanges.append(indexPath!)
+        case .move:
+            moveChanges.append([indexPath!, newIndexPath!])
+        case .update:
+            updateChanges.append(indexPath!)
+        }
+    }
 }
