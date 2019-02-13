@@ -34,7 +34,7 @@ class EditFoodCategoryViewController: UIViewController {
         var newImageUrl: String? = nil
         if let image = imageView.image {
             filePathManager.delete(name: name)
-            newImageUrl = filePathManager.save(image: image, name: name)
+            newImageUrl = filePathManager.save(image: image, name: name, type: "FoodCategories")
         }
         if isEdit {
             if let foodCategory = self.foodCategory {

@@ -34,19 +34,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Categories" id="wfr-e6-rhc" userLabel="Categories">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="i9c-u4-SYm">
-                                <connections>
-                                    <action selector="addButtonPressed:" destination="Rsi-5u-jmd" id="rgP-4Z-hNS"/>
-                                    <segue destination="vJo-Yy-Wrh" kind="show" identifier="editFoodCategory" id="fcH-Yy-UhO"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Reorder" id="ovr-k9-Tbl">
-                                <connections>
-                                    <action selector="reorderButtonPressed:" destination="Rsi-5u-jmd" id="sfl-H5-OqQ"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="i9c-u4-SYm">
+                            <connections>
+                                <segue destination="vJo-Yy-Wrh" kind="show" identifier="editFoodCategory" id="fcH-Yy-UhO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -97,14 +89,11 @@
                         <viewLayoutGuide key="safeArea" id="7qH-L9-2O2"/>
                     </view>
                     <navigationItem key="navigationItem" title="Food Item" id="Pcc-hW-shn">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="cGf-mh-HqM">
-                                <connections>
-                                    <segue destination="2H4-XS-HE0" kind="show" identifier="editFoodItem" id="0gT-I3-irU"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Reorder" id="InD-S3-H8d"/>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="cGf-mh-HqM">
+                            <connections>
+                                <segue destination="2H4-XS-HE0" kind="show" identifier="editFoodItem" id="0gT-I3-irU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="navTitle" destination="Pcc-hW-shn" id="Con-Vo-MDp"/>

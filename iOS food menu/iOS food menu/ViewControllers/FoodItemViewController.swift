@@ -16,7 +16,7 @@ class FoodItemViewController: UIViewController {
     @IBOutlet weak var navTitle: UINavigationItem!
     
     // MARK: Invars
-    var foodCategory: FoodCategory?
+    var foodCategory: FoodCategory!
     
     private let foodItemDataManager = FoodItemDataManager()
     
@@ -28,7 +28,8 @@ class FoodItemViewController: UIViewController {
     
     private lazy var fetchedResultsController: NSFetchedResultsController<FoodItem> = {
         let fetchRequest = NSFetchRequest<FoodItem>(entityName: String(describing: FoodItem.self))
-        let sortDescriptor = NSSortDescriptor(key: "orderIndex", ascending: false)
+        fetchRequest.predicate = NSPredicate.init(format: "foodCategory = %@", self.foodCategory!)
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataManager.shared.mainContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self.fetchedResultsControllerDelegateHandler
@@ -63,7 +64,11 @@ class FoodItemViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case Strings.SegueIds.editFoodItemSegueId:
-            if let indexPath = sender as? IndexPath, let vc = segue.destination as? EditFoodItemViewController {
+            guard let vc = segue.destination as? EditFoodItemViewController else {
+                return
+            }
+            vc.foodCategory = foodCategory
+            if let indexPath = sender as? IndexPath {
                 guard let foodItem = fetchedResultsController.fetchedObjects? [indexPath.row] else {
                     return
                 }

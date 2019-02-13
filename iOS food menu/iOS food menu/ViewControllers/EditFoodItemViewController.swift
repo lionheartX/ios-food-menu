@@ -17,6 +17,8 @@ class EditFoodItemViewController: UIViewController {
     var isEdit: Bool = false
     
     var foodItem: FoodItem?
+    
+    var foodCategory: FoodCategory!
 
     @IBOutlet weak var nameTextField: UITextField!
     
@@ -42,14 +44,19 @@ class EditFoodItemViewController: UIViewController {
         var newImageUrl: String? = nil
         if let image = imageView.image {
             filePathManager.delete(name: name)
-            newImageUrl = filePathManager.save(image: image, name: name)
+            newImageUrl = filePathManager.save(image: image, name: name, type: "FoodItems")
         }
         if isEdit {
             if let foodItem = self.foodItem {
                 foodItemDataManager.updateFoodItem(foodItem: foodItem, name: name, imageUrl: newImageUrl, price: price)
+                foodItemDataManager.assignFoodItem(foodItem, to: foodCategory)
             }
         } else {
-            foodItemDataManager.createFoodItem(name: name, imageUrl: newImageUrl, price: price)
+            foodItemDataManager.createFoodItem(name: name, imageUrl: newImageUrl, price: price) { (newFoodItem) in
+                if let newFoodItem = newFoodItem {
+                    self.foodItemDataManager.assignFoodItem(newFoodItem, to: self.foodCategory)
+                }
+            }
         }
         self.navigationController?.popViewController(animated: true)
     }

@@ -12,15 +12,7 @@ import CoreData
 class FoodCategoryViewController: UIViewController {
     // MARK: - IBOutlets and IBActions
     @IBOutlet weak var tableView: UITableView!
-    
-    @IBAction func addButtonPressed(_ sender: Any) {
-        
-    }
-    
-    @IBAction func reorderButtonPressed(_ sender: Any) {
-        
-    }
-    
+
     // MARK: Invars
     private let foodCategoryDataManager = FoodCategoryDataManager()
     
@@ -32,7 +24,7 @@ class FoodCategoryViewController: UIViewController {
     
     private lazy var fetchedResultsController: NSFetchedResultsController<FoodCategory> = {
         let fetchRequest = NSFetchRequest<FoodCategory>(entityName: String(describing: FoodCategory.self))
-        let sortDescriptor = NSSortDescriptor(key: "orderIndex", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataManager.shared.mainContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self.fetchedResultsControllerDelegateHandler

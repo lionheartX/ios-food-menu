@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 
 class FoodCategoryDataManager {
-//    let persistentContainer: NSPersistentContainer
     
     let backgroundContext: NSManagedObjectContext
     

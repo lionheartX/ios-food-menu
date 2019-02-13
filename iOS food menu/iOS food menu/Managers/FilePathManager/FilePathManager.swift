@@ -12,12 +12,12 @@ class FilePathManager {
     
     let fileManager = FileManager.default
     
-    func save(image: UIImage, name: String) -> String? {
+    func save(image: UIImage, name: String, type: String) -> String? {
         guard let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return nil
         }
         
-        let filePath = documentsURL.appendingPathComponent(name + ".png")
+        let filePath = documentsURL.appendingPathComponent(type + "-" + name + ".png")
         
         do {
             if let data = image.pngData() {
