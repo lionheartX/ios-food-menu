@@ -6,4 +6,4 @@
 
 ## Limitations (due to time constraint)
 1. food items are always sorted alphabetically for simplicity
-2. adding food items with duplicate names will cause a bug where images get reset, solution is either to prevent duplicate names or to change how images are saved in FilePath (currently, it is saved as e.g: "foodItem-Eggs.png")
+2. adding food items with duplicate names will cause a bug where images get reset, solution is either to prevent duplicate names or to change how images are saved in FilePath
