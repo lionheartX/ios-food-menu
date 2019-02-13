@@ -3,6 +3,7 @@
 1. CoreData background context and main context support
 2. tableView batch updates
 3. uses SQLite for CoreData store type in main app, uses In-Memory storage in unit tests for performance
+4. swipe right on an item to edit/delete it
 
 ## Limitations (due to time constraint)
 1. food items are always sorted alphabetically for simplicity
