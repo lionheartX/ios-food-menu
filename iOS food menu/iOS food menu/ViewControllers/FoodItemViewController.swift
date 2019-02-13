@@ -93,7 +93,7 @@ extension FoodItemViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
+        return Constants.TableViews.rowHeight
     }
     
     private func dequeueFoodItemCell(_ indexPath: IndexPath) -> UITableViewCell {

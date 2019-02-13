@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad12_9rounded" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,32 +20,48 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6so-7v-1Va">
-                        <rect key="frame" x="16" y="10" width="80" height="80"/>
+                        <rect key="frame" x="20" y="-10" width="120" height="120"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="80" id="5VS-hV-1SW"/>
-                            <constraint firstAttribute="height" constant="80" id="zgg-Ae-dy8"/>
+                            <constraint firstAttribute="width" constant="80" id="5VS-hV-1SW">
+                                <variation key="heightClass=regular-widthClass=regular" constant="120"/>
+                            </constraint>
+                            <constraint firstAttribute="height" constant="80" id="zgg-Ae-dy8">
+                                <variation key="heightClass=regular-widthClass=regular" constant="120"/>
+                            </constraint>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJQ-Yj-eT1">
-                        <rect key="frame" x="112" y="39.5" width="45" height="21"/>
+                        <rect key="frame" x="160" y="35.5" width="61.5" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                        </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8o-VP-Pkf">
-                        <rect key="frame" x="270" y="39.5" width="39" height="21"/>
+                        <rect key="frame" x="252.5" y="35.5" width="52.5" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.40000000000000002" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                        </variation>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="F8o-VP-Pkf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4Hl-8h-m55"/>
-                    <constraint firstItem="YJQ-Yj-eT1" firstAttribute="leading" secondItem="6so-7v-1Va" secondAttribute="trailing" constant="16" id="E0p-Pg-OjQ"/>
-                    <constraint firstItem="6so-7v-1Va" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Qmt-bt-abT"/>
+                    <constraint firstItem="YJQ-Yj-eT1" firstAttribute="leading" secondItem="6so-7v-1Va" secondAttribute="trailing" constant="16" id="E0p-Pg-OjQ">
+                        <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                    </constraint>
+                    <constraint firstItem="6so-7v-1Va" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Qmt-bt-abT">
+                        <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                    </constraint>
                     <constraint firstItem="YJQ-Yj-eT1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="clb-Ja-kfd"/>
                     <constraint firstItem="F8o-VP-Pkf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YJQ-Yj-eT1" secondAttribute="trailing" constant="16" id="sRj-3z-bQx"/>
-                    <constraint firstAttribute="trailing" secondItem="F8o-VP-Pkf" secondAttribute="trailing" constant="16" id="x4J-iT-SiF"/>
+                    <constraint firstAttribute="trailing" secondItem="F8o-VP-Pkf" secondAttribute="trailing" constant="16" id="x4J-iT-SiF">
+                        <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                    </constraint>
                 </constraints>
             </tableViewCellContentView>
             <constraints>

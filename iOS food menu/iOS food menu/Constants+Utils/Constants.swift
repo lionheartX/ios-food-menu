@@ -9,9 +9,10 @@
 import UIKit
 
 struct Constants {
+    static let deviceType = UIScreen.main.traitCollection.userInterfaceIdiom
+    
     struct TableViews {
-        static let categoryTableViewRowHeight = 20.0
-        static let foodItemTableViewRowHeight = 20.0
+        static let rowHeight: CGFloat = Constants.deviceType == .phone ? 100.0 : 150.0
     }
     
 }
