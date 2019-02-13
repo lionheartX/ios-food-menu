@@ -41,6 +41,12 @@ class NSManagedObjectContextMock: NSManagedObjectContext {
     var expectation: XCTestExpectation?
     var saveWasCalled = false
     
+    override func performAndWait(_ block: () -> Void) {
+        super.performAndWait(block)
+        
+        expectation?.fulfill()
+    }
+    
     override func save() throws {
         try super.save()
         saveWasCalled = true

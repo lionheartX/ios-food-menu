@@ -12,12 +12,12 @@ import CoreData
 class CoreDataManager {
     static let shared = CoreDataManager()
     
-    private var storeType: String?
+    private var storeType: String = NSSQLiteStoreType
     
     lazy var persistentContainer: NSPersistentContainer! = {
         let persistentContainer = NSPersistentContainer(name: "iOS_food_menu")
         let description = persistentContainer.persistentStoreDescriptions.first
-        description?.type = storeType ?? NSSQLiteStoreType
+        description?.type = storeType
         return persistentContainer
     }()
 
@@ -25,7 +25,7 @@ class CoreDataManager {
         let context = self.persistentContainer.newBackgroundContext()
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         return context
-    }() // commit changes to core data on the background thread
+    }()
     
     lazy var mainContext: NSManagedObjectContext = {
         let context = self.persistentContainer.viewContext

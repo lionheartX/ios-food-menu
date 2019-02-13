@@ -41,7 +41,7 @@ class EditFoodCategoryViewController: UIViewController {
                 foodCategoryDataManager.updateFoodCategory(foodCategory: foodCategory, name: name, imageUrl: newImageUrl)
             }
         } else {
-            foodCategoryDataManager.createFoodCategory(name: name, imageUrl: newImageUrl)
+            foodCategoryDataManager.createFoodCategory(name: name, imageUrl: newImageUrl, completion: {_ in })
         }
         self.navigationController?.popViewController(animated: true)
     }

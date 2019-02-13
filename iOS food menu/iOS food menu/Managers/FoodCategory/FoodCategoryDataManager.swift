@@ -18,7 +18,7 @@ class FoodCategoryDataManager {
     }
     
     // MARK: - CRUD
-    func createFoodCategory(name: String, imageUrl: String?) {
+    func createFoodCategory(name: String, imageUrl: String?, completion: @escaping(FoodCategory?) -> Void) {
         backgroundContext.performAndWait {
             guard let foodCategory = NSEntityDescription.insertNewObject(forEntityName: String(describing: FoodCategory.self), into: backgroundContext) as? FoodCategory else {
                 fatalError("CoreData type mis-match")
@@ -26,7 +26,12 @@ class FoodCategoryDataManager {
             
             foodCategory.name = name
             foodCategory.imageURL = imageUrl
-            try? backgroundContext.save()
+            do {
+                try backgroundContext.save()
+                completion(foodCategory)
+            } catch {
+                completion(nil)
+            }
         }
     }
     
