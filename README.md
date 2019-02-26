@@ -7,4 +7,8 @@
 
 ## Limitations (due to time constraint)
 1. food items are always sorted alphabetically for simplicity
-2. adding food items with duplicate names will cause a bug where images get reset, solution is either to prevent duplicate names or to change how images are saved in FilePath
+
+## Fixes after submission (on develop branch)
+1. Cascading deletion 
+2. Adding food items with duplicate names is allowed, images is stored on filepath by hashValue
+3. Deleting CoreData objects also removes any local image files that are associated (TODO)
