@@ -5,7 +5,7 @@
 3. uses SQLite for CoreData store type in main app, uses In-Memory storage in unit tests for performance
 4. swipe right on an item to edit/delete it
 
-## Limitations (due to time constraint)
+## Limitations
 1. food items are always sorted alphabetically for simplicity
 
 ## Fixes after submission (on develop branch)
