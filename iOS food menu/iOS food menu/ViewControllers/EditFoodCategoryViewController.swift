@@ -27,23 +27,35 @@ class EditFoodCategoryViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
-        guard let name = nameTextField.text, name != "" else {
+        guard let newName = nameTextField.text, newName != "" else {
             self.presentAlertView(title: "Please enter a name")
             return
         }
+        
+        isEdit ? editFoodCategoryHandler(newName: newName) : addFoodCategoryHandler(newName: newName)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    private func editFoodCategoryHandler(newName: String) {
+        guard let foodCategory = self.foodCategory else {
+            fatalError()
+        }
+        
         var newImageUrl: String? = nil
         if let image = imageView.image {
-            filePathManager.delete(name: name)
-            newImageUrl = filePathManager.save(image: image, name: name, type: "FoodCategories")
+            filePathManager.tryDelete(hashValue: foodCategory.hashValue, entityType: .foodCategory)
+            newImageUrl = filePathManager.save(image: image, hashValue: foodCategory.hashValue, entityType: .foodCategory)
         }
-        if isEdit {
-            if let foodCategory = self.foodCategory {
-                foodCategoryDataManager.updateFoodCategory(foodCategory: foodCategory, name: name, imageUrl: newImageUrl)
+        foodCategoryDataManager.updateFoodCategory(foodCategory: foodCategory, name: newName, imageUrl: newImageUrl)
+    }
+    
+    private func addFoodCategoryHandler(newName: String) {
+        foodCategoryDataManager.createFoodCategory(name: newName, imageUrl: nil) { (newFoodCategory) in
+            if let image = self.imageView.image, let newFoodCategory = newFoodCategory {
+                let newImageUrl = self.filePathManager.save(image: image, hashValue: newFoodCategory.hashValue, entityType: .foodCategory)
+                self.foodCategoryDataManager.updateFoodCategory(foodCategory: newFoodCategory, name: newName, imageUrl: newImageUrl)
             }
-        } else {
-            foodCategoryDataManager.createFoodCategory(name: name, imageUrl: newImageUrl, completion: {_ in })
         }
-        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {

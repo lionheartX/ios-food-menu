@@ -55,4 +55,20 @@ class FoodCategoryDataManager {
             }
         }
     }
+    
+//    // MARK: - Utils
+// Do not delete, function might be useful later
+//    func foodCategoryWithNameExists(name: String) -> Bool {
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: FoodCategory.self))
+//        fetchRequest.includesSubentities = false
+//        fetchRequest.predicate = NSPredicate(format: "name = %@", name)
+//
+//        var entitiesCount = 0
+//        do {
+//            entitiesCount = try backgroundContext.count(for: fetchRequest)
+//        } catch {
+//            return false
+//        }
+//        return entitiesCount > 0
+//    }
 }

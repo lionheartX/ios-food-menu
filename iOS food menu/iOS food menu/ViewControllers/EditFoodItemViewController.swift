@@ -31,7 +31,7 @@ class EditFoodItemViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
-        guard let name = nameTextField.text, name != "" else {
+        guard let newName = nameTextField.text, newName != "" else {
             self.presentAlertView(title: "Please enter a name")
             return
         }
@@ -41,24 +41,33 @@ class EditFoodItemViewController: UIViewController {
             return
         }
         
+        isEdit ? editFoodItemHandler(newName: newName, price: price) : addFoodItemHandler(newName: newName, price: price)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    private func editFoodItemHandler(newName: String, price: String) {
+        guard let foodItem = self.foodItem else {
+            fatalError()
+        }
         var newImageUrl: String? = nil
         if let image = imageView.image {
-            filePathManager.delete(name: name)
-            newImageUrl = filePathManager.save(image: image, name: name, type: "FoodItems")
+            filePathManager.tryDelete(hashValue: foodItem.hashValue, entityType: .foodItem)
+            newImageUrl = filePathManager.save(image: image, hashValue: foodItem.hashValue, entityType: .foodItem)
         }
-        if isEdit {
-            if let foodItem = self.foodItem {
-                foodItemDataManager.updateFoodItem(foodItem: foodItem, name: name, imageUrl: newImageUrl, price: price)
-                foodItemDataManager.assignFoodItem(foodItem, to: foodCategory)
-            }
-        } else {
-            foodItemDataManager.createFoodItem(name: name, imageUrl: newImageUrl, price: price) { (newFoodItem) in
-                if let newFoodItem = newFoodItem {
-                    self.foodItemDataManager.assignFoodItem(newFoodItem, to: self.foodCategory)
-                }
+        foodItemDataManager.updateFoodItem(foodItem: foodItem, name: newName, imageUrl: newImageUrl, price: price)
+        foodItemDataManager.assignFoodItem(foodItem, to: foodCategory)
+    }
+    
+    private func addFoodItemHandler(newName: String, price: String) {
+        var newImageUrl: String? = nil
+        if let image = imageView.image {
+            newImageUrl = filePathManager.save(image: image, hashValue: foodItem.hashValue, entityType: .foodItem)
+        }
+        foodItemDataManager.createFoodItem(name: newName, imageUrl: newImageUrl, price: price) { (newFoodItem) in
+            if let newFoodItem = newFoodItem {
+                self.foodItemDataManager.assignFoodItem(newFoodItem, to: self.foodCategory)
             }
         }
-        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {

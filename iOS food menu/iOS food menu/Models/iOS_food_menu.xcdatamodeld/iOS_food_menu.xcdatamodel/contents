@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="FoodCategory" representedClassName="FoodCategory" syncable="YES" codeGenerationType="class">
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="foodItems" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="FoodItem" inverseName="foodCategory" inverseEntity="FoodItem" syncable="YES"/>
+        <relationship name="foodItems" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="FoodItem" inverseName="foodCategory" inverseEntity="FoodItem" syncable="YES"/>
     </entity>
     <entity name="FoodItem" representedClassName="FoodItem" syncable="YES" codeGenerationType="class">
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
